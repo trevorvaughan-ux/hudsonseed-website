@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HudsonSeed Command Center v2</title>
+<style>
+:root {
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f5f4ef;
+  --color-background-tertiary: #ebeae3;
+  --color-background-success: #e1f5ee;
+  --color-background-warning: #faeeда;
+  --color-background-danger: #fceвeb;
+  --color-background-info: #e6f1fb;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #5f5e5a;
+  --color-text-tertiary: #888780;
+  --color-text-success: #0f6e56;
+  --color-text-warning: #854f0b;
+  --color-text-danger: #a32d2d;
+  --color-text-info: #185fa5;
+  --color-border-tertiary: rgba(0,0,0,0.08);
+  --color-border-secondary: rgba(0,0,0,0.15);
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+  --font-mono: "SF Mono", Menlo, Consolas, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #4A9B96;
+  color: white;
+  padding: 30px;
+  border-radius: var(--border-radius-lg);
+  margin-bottom: 30px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 8px 0 0 0;
+  opacity: 0.9;
+  font-size: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: var(--color-background-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-lg);
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.card h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  color: var(--color-text-primary);
+}
+
+.card p {
+  margin: 8px 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.status-badge.active {
+  background-color: var(--color-background-success);
+  color: var(--color-text-success);
+}
+
+.status-badge.pending {
+  background-color: var(--color-background-warning);
+  color: var(--color-text-warning);
+}
+
+.status-badge.error {
+  background-color: var(--color-background-danger);
+  color: var(--color-text-danger);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🎯 HudsonSeed Command Center</h1>
+    <div class="subtitle">K-12 Yoga & Mindfulness Outreach Dashboard | Updated May 19, 2026</div>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <h3>📧 Email Outreach</h3>
+      <p><strong>Status:</strong> Live & Verified</p>
+      <p>Gmail OAuth working. Holding page deployed to Railway. JC beta ready to launch.</p>
+      <span class="status-badge active">✓ ACTIVE</span>
+    </div>
+
+    <div class="card">
+      <h3>🌐 Website</h3>
+      <p><strong>Holding Page:</strong> Ready</p>
+      <p>Diverse classroom hero, Hanuman AI coach mascot, email waitlist, demo booking CTAs.</p>
+      <span class="status-badge pending">⏳ DEPLOYING</span>
+    </div>
+
+    <div class="card">
+      <h3>🚀 Pitching Machine</h3>
+      <p><strong>Architecture:</strong> Complete</p>
+      <p>Email drafting, reply handler, follow-up sequences. Awaiting JC beta launch.</p>
+      <span class="status-badge pending">⏳ BETA LAUNCH</span>
+    </div>
+
+    <div class="card">
+      <h3>🛠️ Infrastructure</h3>
+      <p><strong>GitHub:</strong> Connected & Working</p>
+      <p>Supabase + Railway auto-deploy live. AI capabilities table created.</p>
+      <span class="status-badge active">✓ ACTIVE</span>
+    </div>
+
+    <div class="card">
+      <h3>💰 Revenue Target</h3>
+      <p><strong>Goal:</strong> $1,000/day by Q4 2026</p>
+      <p>JC beta → district pilots → national expansion. 18-month roadmap locked.</p>
+      <span class="status-badge pending">▶ IN PROGRESS</span>
+    </div>
+
+    <div class="card">
+      <h3>🤖 AI Squad</h3>
+      <p><strong>Team:</strong> Claude + Grok + Gemini</p>
+      <p>Division of labor: Claude = code/systems, Grok = strategy, Gemini = video/research.</p>
+      <span class="status-badge active">✓ COORDINATED</span>
+    </div>
+  </div>
+
+  <footer>
+    HudsonSeed Command Center | Last Updated: May 19, 2026, 10:20 PM ET | Reaching 1 Million Kids, One Step At A Time
+  </footer>
+</div>
+</body>
+</html>
