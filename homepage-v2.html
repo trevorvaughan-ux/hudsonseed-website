@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HudsonSeed — The Science of Calm | K-12 Yoga & Mindfulness</title>
+<meta name="description" content="Approved JCPS Vendor 9615. K-12 yoga & mindfulness already in 7,000 teachers' classrooms and 100,000+ kids' lives. No materials needed — just a whiteboard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FDF8F0; --cream-2:#F7EFE1; --teal:#4A9EA6; --teal-d:#2F7E82; --teal-l:#E1F0F0;
+    --char:#3A3A3A; --muted:#6F6B62; --faint:#9A958A; --line:#EADFCB; --white:#FFFFFF;
+    --gold:#D99A4E;
+    --head:'Playfair Display',Georgia,serif; --body:'DM Sans',system-ui,sans-serif;
+    --maxw:1180px; --r:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);background:var(--cream);color:var(--char);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--body);font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-d)}
+  .serif-i{font-style:italic;color:var(--teal)}
+  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:var(--body);font-weight:600;font-size:.95rem;padding:.85em 1.6em;border-radius:100px;border:1.5px solid transparent;cursor:pointer;transition:.25s ease;white-space:nowrap}
+  .btn-primary{background:var(--teal);color:#fff}
+  .btn-primary:hover{background:var(--teal-d);transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(47,126,130,.5)}
+  .btn-ghost{background:transparent;color:var(--char);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal-d)}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:100;background:rgba(253,248,240,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:600;font-size:1.3rem}
+  .logo .mark{width:34px;height:34px;border-radius:9px;background:var(--teal);display:grid;place-items:center;flex:none}
+  .navlinks{display:flex;align-items:center;gap:30px}
+  .navlinks a{font-size:.9rem;font-weight:500;color:var(--muted);transition:.2s;cursor:pointer}
+  .navlinks a:hover{color:var(--teal-d)}
+  .navlinks .btn{padding:.6em 1.3em}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{width:24px;height:2px;background:var(--char);transition:.3s}
+
+  /* PAGE system */
+  .page{display:none;animation:fade .5s ease}
+  .page.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* HERO */
+  .hero{position:relative;padding:72px 0 56px;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(70% 50% at 80% 0%,rgba(74,158,166,.10),transparent 60%),
+    radial-gradient(50% 40% at 0% 90%,rgba(217,154,78,.08),transparent 60%);pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative}
+  .hero h1{font-size:clamp(2.6rem,5.2vw,4.3rem);margin:18px 0 0}
+  .hero .sub{font-size:1.12rem;color:var(--muted);max-width:30ch;margin:22px 0 30px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-vis{position:relative}
+  .hero-card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 30px 60px -30px rgba(122,86,56,.4)}
+  .hero-card img{border-radius:14px;width:100%;aspect-ratio:4/3;object-fit:cover}
+  .hero-illus{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:var(--cream-2)}
+  .hero-illus svg{width:100%;height:100%;display:block}
+  .illus-cap{position:absolute;left:0;right:0;bottom:0;padding:8px 12px;font-size:.75rem;color:var(--muted);background:linear-gradient(transparent,rgba(253,248,240,.92));text-align:center}
+  /* Hanuman bubble */
+  .hanuman{position:absolute;left:-18px;top:-26px;display:flex;align-items:flex-start;gap:10px;z-index:3;max-width:300px}
+  .h-ava{width:54px;height:54px;border-radius:50%;background:#FBEFD9;overflow:hidden;flex:none;box-shadow:0 8px 20px -8px rgba(122,86,56,.5);border:2px solid #fff}
+  .h-bubble{background:#fff;border:1px solid var(--line);border-radius:16px;border-top-left-radius:4px;padding:12px 14px;font-size:.85rem;color:var(--char);box-shadow:0 12px 28px -16px rgba(122,86,56,.4)}
+  .h-bubble b{color:var(--teal-d)}
+  .float{animation:float 5s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+  /* TRUST BAR */
+  .trustbar{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trustbar .wrap{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:18px 24px;font-size:.82rem;color:var(--muted);letter-spacing:.02em}
+  .trustbar b{color:var(--teal-d);font-weight:600}
+  .dot{width:4px;height:4px;border-radius:50%;background:var(--faint)}
+
+  /* SECTION */
+  section.band{padding:84px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 52px}
+  .sec-head h2{font-size:clamp(2rem,3.6vw,2.9rem);margin:12px 0 0}
+  .sec-head p{color:var(--muted);margin-top:14px;font-size:1.05rem}
+
+  /* STATS (slide 1 featured) */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 24px 50px -32px rgba(122,86,56,.35)}
+  .stat{padding:34px 20px;text-align:center;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .n{font-family:var(--head);font-size:clamp(1.9rem,3.4vw,2.7rem);color:var(--teal);font-weight:600}
+  .stat .l{font-size:.82rem;color:var(--muted);margin-top:4px;letter-spacing:.03em}
+
+  /* PILLARS (slide 2 featured) */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .pillar{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;transition:.3s}
+  .pillar:hover{transform:translateY(-5px);box-shadow:0 24px 44px -26px rgba(122,86,56,.4);border-color:#dcc9a6}
+  .pic{width:52px;height:52px;border-radius:14px;background:var(--teal-l);display:grid;place-items:center;margin-bottom:18px}
+  .pillar h3{font-size:1.3rem;margin-bottom:8px}
+  .pillar p{color:var(--muted);font-size:.96rem}
+
+  /* HANUMAN feature (slide 3) */
+  .hcoach{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center}
+  .hcoach .badge{display:inline-block;background:var(--teal-l);color:var(--teal-d);font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:18px}
+  .hcoach h2{font-size:clamp(1.9rem,3.4vw,2.7rem)}
+  .hcoach p.lead{color:var(--muted);font-size:1.05rem;margin:16px 0 22px;max-width:42ch}
+  .chatcard{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 26px 54px -30px rgba(122,86,56,.4)}
+  .chat-top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .chat-top .h-ava{width:46px;height:46px;font-size:1.3rem}
+  .chat-top .nm{font-weight:600;font-size:.98rem}
+  .chat-top .rl{font-size:.78rem;color:var(--faint)}
+  .msg{background:#F2F8F6;border:1px solid #DCEDE7;border-radius:14px;border-top-left-radius:4px;padding:13px 16px;font-size:.95rem;color:var(--char);font-style:italic}
+  .chat-foot{font-size:.78rem;color:var(--faint);margin-top:12px;display:flex;align-items:center;gap:6px}
+
+  /* LOGOS / schools mini */
+  .logos{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .logo-chip{background:var(--white);border:1px solid var(--line);border-radius:100px;padding:10px 22px;font-weight:500;font-size:.9rem;color:var(--muted)}
+
+  /* TESTIMONIAL strip */
+  .quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .quote{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:30px;position:relative}
+  .quote .mark{font-family:var(--head);font-size:3.4rem;color:var(--teal-l);line-height:.6;position:absolute;top:22px;right:24px}
+  .quote p{font-size:1.05rem;color:var(--char);position:relative;z-index:1}
+  .quote .who{margin-top:18px;font-size:.85rem;color:var(--muted)}
+  .quote .who b{color:var(--char);display:block;font-weight:600}
+
+  /* CTA band */
+  .ctaband{background:linear-gradient(135deg,var(--teal-d),var(--teal));color:#fff;border-radius:26px;padding:60px 40px;text-align:center;position:relative;overflow:hidden}
+  .ctaband::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.07);top:-120px;right:-90px}
+  .ctaband h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.8rem);position:relative}
+  .ctaband p{opacity:.92;margin:14px auto 26px;max-width:46ch;position:relative}
+  .ctaband .btn-primary{background:#fff;color:var(--teal-d)}
+  .ctaband .btn-primary:hover{background:var(--cream)}
+
+  /* sub-page hero */
+  .phero{padding:64px 0 20px;text-align:center}
+  .phero h1{font-size:clamp(2.2rem,4.4vw,3.4rem);margin-top:14px}
+  .phero p{color:var(--muted);max-width:54ch;margin:16px auto 0;font-size:1.06rem}
+
+  /* schools grid */
+  .school-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+  .school{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.25s}
+  .school:hover{transform:translateY(-4px);box-shadow:0 18px 36px -24px rgba(122,86,56,.4)}
+  .school .tag{font-size:.72rem;color:var(--teal-d);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .school h4{font-family:var(--head);font-size:1.15rem;margin:8px 0 4px}
+  .school .meta{font-size:.85rem;color:var(--muted)}
+  .map-note{text-align:center;color:var(--faint);font-size:.85rem;margin-top:34px}
+
+  /* team */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:24px}
+  .member{text-align:center}
+  .avatar{width:110px;height:110px;border-radius:50%;margin:0 auto 16px;background:linear-gradient(135deg,var(--teal-l),var(--cream-2));display:grid;place-items:center;font-family:var(--head);font-size:2rem;color:var(--teal-d);border:1px solid var(--line)}
+  .member h4{font-family:var(--head);font-size:1.2rem}
+  .member .role{color:var(--teal-d);font-size:.85rem;font-weight:500;margin:2px 0 8px}
+  .member p{color:var(--muted);font-size:.9rem}
+
+  /* partners */
+  .partner-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+  .partner{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;gap:16px;align-items:flex-start}
+  .partner .ic{width:48px;height:48px;border-radius:12px;background:var(--teal-l);display:grid;place-items:center;flex:none}
+  .partner h4{font-family:var(--head);font-size:1.18rem;margin-bottom:6px}
+  .partner p{color:var(--muted);font-size:.9rem}
+
+  /* footer */
+  footer{background:var(--char);color:#E8E2D6;padding:54px 0 28px;margin-top:20px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer .logo{color:#fff}
+  footer p{color:#B5AE9F;font-size:.9rem;margin-top:14px;max-width:34ch}
+  footer h5{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#8E887B;margin-bottom:16px}
+  footer ul{list-style:none}
+  footer li{margin-bottom:10px}
+  footer li a{color:#D8D2C5;font-size:.92rem;cursor:pointer}
+  footer li a:hover{color:var(--teal)}
+  .foot-bot{border-top:1px solid #4a4944;margin-top:40px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.8rem;color:#8E887B}
+
+  /* sticky mobile CTA */
+  .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:rgba(253,248,240,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 16px}
+  .sticky-cta .btn{width:100%;justify-content:center}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    .hero-grid,.hcoach{grid-template-columns:1fr;gap:40px}
+    .hero{padding:48px 0 40px}
+    .hanuman{position:static;max-width:none;margin-bottom:18px}
+    .quotes,.foot-grid{grid-template-columns:1fr}
+    .pillars{grid-template-columns:1fr;gap:16px}
+  }
+  @media(max-width:680px){
+    .navlinks{position:fixed;inset:70px 0 auto 0;background:var(--cream);flex-direction:column;gap:0;border-bottom:1px solid var(--line);padding:8px 0;transform:translateY(-130%);transition:.35s;align-items:stretch}
+    .navlinks.open{transform:none}
+    .navlinks a{padding:14px 28px;border-bottom:1px solid var(--line)}
+    .navlinks .btn{margin:12px 24px}
+    .burger{display:flex}
+    .stats{grid-template-columns:1fr;}
+    .stat{border-right:0;border-bottom:1px solid var(--line)}
+    .stat:last-child{border-bottom:0}
+    section.band{padding:60px 0}
+    .sticky-cta{display:block}
+    body{padding-bottom:74px}
+    .ctaband{padding:46px 24px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" onclick="go('home')">
+      <span class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3C9 7 9 10 12 13C15 10 15 7 12 3Z" fill="#fff"/><path d="M5 12C8 11 11 12 12 15C9 16 6 15 5 12Z" fill="#fff"/><path d="M19 12C16 11 13 12 12 15C15 16 18 15 19 12Z" fill="#fff"/></svg></span>
+      HudsonSeed
+    </a>
+    <div class="navlinks" id="nav">
+      <a onclick="go('home')">Home</a>
+      <a style="display:none" onclick="go('schools')">Schools</a>
+      <a style="display:none" onclick="go('voices')">Voices</a>
+      <a style="display:none" onclick="go('team')">Team</a>
+      <a style="display:none" onclick="go('partners')">Partners</a>
+      <a class="btn btn-primary" onclick="go('home');setTimeout(()=>scrollTo(0,99999),60)">Book a 10-min intro</a>
+    </div>
+    <button class="burger" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- ============ HOME ============ -->
+<div class="page active" id="home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Approved JCPS Vendor · Code 9615</span>
+        <h1>The Science of <span class="serif-i">Calm</span>.</h1>
+        <p class="sub">K–12 yoga & mindfulness, built for the everyday classroom. No materials, no setup — just a whiteboard.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" onclick="scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">Book a 10-min intro</a>
+          <a class="btn btn-ghost" onclick="document.getElementById('coach').scrollIntoView({behavior:'smooth'})">Meet Hanuman ↓</a>
+        </div>
+      </div>
+      <div class="hero-vis">
+        <div class="hanuman float">
+          <div class="h-ava"><svg style="width:100%;height:100%;display:block" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="halo" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#FBEFD9"/>
+      <stop offset="70%" stop-color="#F6E4C6"/>
+      <stop offset="100%" stop-color="#F6E4C6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C98A53"/><stop offset="1" stop-color="#B0784A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- glow halo -->
+  <circle cx="100" cy="88" r="86" fill="url(#halo)"/>
+  <!-- thin gold ring (Vedic halo cue) -->
+  <circle cx="100" cy="84" r="60" fill="none" stroke="#D99A4E" stroke-width="2.2" opacity=".55"/>
+
+  <!-- ears -->
+  <circle cx="46" cy="80" r="20" fill="#B0784A"/><circle cx="154" cy="80" r="20" fill="#B0784A"/>
+  <circle cx="46" cy="80" r="11" fill="#E7C9A0"/><circle cx="154" cy="80" r="11" fill="#E7C9A0"/>
+
+  <!-- head -->
+  <circle cx="100" cy="84" r="52" fill="url(#face)"/>
+  <!-- muzzle -->
+  <ellipse cx="100" cy="98" rx="36" ry="30" fill="#EBD2B4"/>
+  <!-- crown tuft (playful) -->
+  <path d="M100 30c-5 8-4 14 0 20 4-6 5-12 0-20z" fill="#8A5E37"/>
+
+  <!-- tilak mark on forehead (saffron, devotional cue) -->
+  <path d="M100 46c-3 6-3 12 0 16 3-4 3-10 0-16z" fill="#D99A4E"/>
+
+  <!-- eyes, gently closed (calm) -->
+  <path d="M74 84q9 7 18 0" stroke="#5A3D26" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M108 84q9 7 18 0" stroke="#5A3D26" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- soft brows -->
+  <path d="M74 74q9 -4 18 0" stroke="#8A5E37" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <path d="M108 74q9 -4 18 0" stroke="#8A5E37" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+
+  <!-- nose -->
+  <ellipse cx="94" cy="98" rx="2.6" ry="3.4" fill="#7A5638"/><ellipse cx="106" cy="98" rx="2.6" ry="3.4" fill="#7A5638"/>
+  <!-- gentle smile -->
+  <path d="M86 108q14 11 28 0" stroke="#7A5638" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- little rosy cheeks -->
+  <circle cx="76" cy="104" r="6" fill="#E89B6B" opacity=".4"/><circle cx="124" cy="104" r="6" fill="#E89B6B" opacity=".4"/>
+
+  <!-- namaste hands below chin (teal sleeves, devotional) -->
+  <g>
+    <path d="M100 150c-10 0-18-6-22-14 6-3 14-4 22-4s16 1 22 4c-4 8-12 14-22 14z" fill="#4A9EA6"/>
+    <path d="M100 132c-5 0-9 4-10 9h20c-1-5-5-9-10-9z" fill="#EBD2B4"/>
+    <path d="M100 132v18" stroke="#D8BE9A" stroke-width="1.4"/>
+  </g>
+</svg></div>
+          <div class="h-bubble"><b>Namaste.</b> I'm Hanuman, the AI yoga coach being built for every HudsonSeed classroom. 🙏</div>
+        </div>
+        <div class="hero-card">
+          <!-- Swap this whole .hero-illus block for: <img src="YOUR_PHOTO.jpg" alt="Children meditating at their desks"> -->
+          <div class="hero-illus" role="img" aria-label="Elementary children sitting at their desks in calm meditation">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#EAF5F5"/><stop offset="1" stop-color="#FDF8F0"/>
+                </linearGradient>
+                <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#FBEFD9"/><stop offset="1" stop-color="#F3DFBE"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#sky)"/>
+              <!-- soft window light -->
+              <circle cx="330" cy="60" r="70" fill="url(#sun)" opacity=".55"/>
+              <rect x="278" y="18" width="86" height="92" rx="8" fill="#fff" opacity=".5"/>
+              <line x1="321" y1="18" x2="321" y2="110" stroke="#E1F0F0" stroke-width="3"/>
+              <line x1="278" y1="64" x2="364" y2="64" stroke="#E1F0F0" stroke-width="3"/>
+              <!-- floor -->
+              <rect y="232" width="400" height="68" fill="#F2E7D2"/>
+              <!-- three kids seated at desks: feet flat on floor, arms crossed, eyes closed -->
+              <g>
+                <!-- desk 1 (in front of child, lower so body shows above) -->
+                <!-- legs/feet on floor -->
+                <rect x="70" y="232" width="9" height="22" rx="3" fill="#5A6B8C"/><rect x="88" y="232" width="9" height="22" rx="3" fill="#5A6B8C"/>
+                <rect x="66" y="252" width="16" height="7" rx="3" fill="#3A3A3A"/><rect x="85" y="252" width="16" height="7" rx="3" fill="#3A3A3A"/>
+                <!-- chair seat hint -->
+                <rect x="60" y="222" width="48" height="6" rx="2" fill="#B0855E"/>
+                <!-- torso + crossed arms -->
+                <path d="M60 222c0-20 11-30 23-30s23 10 23 30z" fill="#4A9EA6"/>
+                <path d="M66 206c8 9 26 9 34 0l3 10c-13 9-27 9-40 0z" fill="#3E8A91"/>
+                <!-- crossed forearms -->
+                <rect x="64" y="205" width="38" height="9" rx="4.5" fill="#EBD2B4" transform="rotate(8 83 209)"/>
+                <rect x="64" y="205" width="38" height="9" rx="4.5" fill="#E3C6A4" transform="rotate(-8 83 209)"/>
+                <!-- head, eyes closed -->
+                <circle cx="83" cy="172" r="21" fill="#EBD2B4"/>
+                <path d="M62 172a21 21 0 0142 0z" fill="#7A5638"/>
+                <path d="M74 173q5 4 9 0M88 173q5 4 9 0" stroke="#7A5638" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                <!-- desk in front -->
+                <rect x="44" y="214" width="82" height="13" rx="3" fill="#C99B73"/>
+                <rect x="52" y="227" width="7" height="20" fill="#B0855E"/><rect x="110" y="227" width="7" height="20" fill="#B0855E"/>
+              </g>
+              <g>
+                <rect x="188" y="234" width="9" height="22" rx="3" fill="#7A5A6B"/><rect x="206" y="234" width="9" height="22" rx="3" fill="#7A5A6B"/>
+                <rect x="184" y="254" width="16" height="7" rx="3" fill="#3A3A3A"/><rect x="203" y="254" width="16" height="7" rx="3" fill="#3A3A3A"/>
+                <rect x="178" y="224" width="48" height="6" rx="2" fill="#B0855E"/>
+                <path d="M178 224c0-21 11-31 24-31s24 10 24 31z" fill="#2F7E82"/>
+                <path d="M184 208c8 9 27 9 35 0l3 10c-13 9-28 9-41 0z" fill="#266A6E"/>
+                <rect x="182" y="207" width="39" height="9" rx="4.5" fill="#D8A87E" transform="rotate(8 201 211)"/>
+                <rect x="182" y="207" width="39" height="9" rx="4.5" fill="#CC9B72" transform="rotate(-8 201 211)"/>
+                <circle cx="201" cy="173" r="22" fill="#D8A87E"/>
+                <path d="M179 173a22 22 0 0144 0z" fill="#3A2A1E"/>
+                <path d="M191 174q5 4 9 0M205 174q5 4 9 0" stroke="#3A2A1E" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                <rect x="160" y="216" width="82" height="13" rx="3" fill="#C99B73"/>
+                <rect x="168" y="229" width="7" height="20" fill="#B0855E"/><rect x="226" y="229" width="7" height="20" fill="#B0855E"/>
+              </g>
+              <g>
+                <rect x="304" y="232" width="9" height="22" rx="3" fill="#5A6B8C"/><rect x="322" y="232" width="9" height="22" rx="3" fill="#5A6B8C"/>
+                <rect x="300" y="252" width="16" height="7" rx="3" fill="#3A3A3A"/><rect x="319" y="252" width="16" height="7" rx="3" fill="#3A3A3A"/>
+                <rect x="294" y="222" width="48" height="6" rx="2" fill="#B0855E"/>
+                <path d="M294 222c0-20 11-30 23-30s23 10 23 30z" fill="#D99A4E"/>
+                <path d="M300 206c8 9 26 9 34 0l3 10c-13 9-27 9-40 0z" fill="#C98A3E"/>
+                <rect x="298" y="205" width="38" height="9" rx="4.5" fill="#F0DCC2" transform="rotate(8 317 209)"/>
+                <rect x="298" y="205" width="38" height="9" rx="4.5" fill="#E6CDAC" transform="rotate(-8 317 209)"/>
+                <circle cx="317" cy="172" r="21" fill="#F0DCC2"/>
+                <path d="M296 172a21 21 0 0142 0z" fill="#9A6B3F"/>
+                <path d="M308 173q5 4 9 0M322 173q5 4 9 0" stroke="#9A6B3F" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                <rect x="278" y="214" width="82" height="13" rx="3" fill="#C99B73"/>
+                <rect x="286" y="227" width="7" height="20" fill="#B0855E"/><rect x="344" y="227" width="7" height="20" fill="#B0855E"/>
+              </g>
+              <!-- little calm marks -->
+              <text x="83" y="142" font-size="13" text-anchor="middle" fill="#4A9EA6" opacity=".55">෴</text>
+              <text x="201" y="140" font-size="13" text-anchor="middle" fill="#2F7E82" opacity=".55">෴</text>
+              <text x="317" y="142" font-size="13" text-anchor="middle" fill="#D99A4E" opacity=".55">෴</text>
+            </svg>
+            <span class="illus-cap">Calm in session — kids meditating at their desks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trustbar">
+    <div class="wrap">
+      <span><b>7,000</b> teachers</span><span class="dot"></span>
+      <span><b>100,000+</b> children</span><span class="dot"></span>
+      <span><b>Vendor 9615</b> · approved JCPS</span><span class="dot"></span>
+      <span>Live across Hudson County</span>
+    </div>
+  </div>
+
+  <!-- Slide 1 featured: the proof -->
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">The proof, up front</span>
+        <h2>Already trusted, at scale.</h2>
+        <p>This isn't a pilot looking for its first believer. It's a proven program ready for your building.</p>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><div class="n">7,000</div><div class="l">teachers using it</div></div>
+        <div class="stat"><div class="n">100,000+</div><div class="l">children reached</div></div>
+        <div class="stat"><div class="n">1</div><div class="l">whiteboard — nothing else</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 2 featured: pillars -->
+  <section class="band" style="background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Why principals say yes</span>
+        <h2>Trusted. Effortless. Worth it.</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F7E82" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Trusted</h3>
+          <p>Approved JCPS Vendor 9615 — already in 7,000 teachers' rooms and 100,000+ kids' classrooms.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F7E82" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3>Effortless</h3>
+          <p>No materials, no setup. If the room has a whiteboard, you're ready to go in minutes.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F7E82" stroke-width="1.8"><path d="M20.8 6.6a5 5 0 00-7.1 0L12 8.2l-1.7-1.6a5 5 0 10-7 7.1l1.6 1.7L12 22l7.1-6.6 1.7-1.7a5 5 0 000-7.1z"/></svg></div>
+          <h3>Worth it</h3>
+          <p>Big impact for a fraction of a typical SEL budget — an easy yes for a tight calendar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3 featured: Hanuman -->
+  <section class="band" id="coach">
+    <div class="wrap hcoach">
+      <div>
+        <span class="badge">Now in beta</span>
+        <h2>Meet Hanuman, your <span class="serif-i">AI yoga coach</span>.</h2>
+        <p class="lead">A friendly on-screen guide that leads breathing and movement right on the classroom whiteboard — so any teacher can run a calm, confident session with zero training.</p>
+        <a class="btn btn-primary" onclick="scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">See it in your school</a>
+      </div>
+      <div class="chatcard reveal">
+        <div class="chat-top">
+          <div class="h-ava"><svg style="width:100%;height:100%;display:block" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="halo" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#FBEFD9"/>
+      <stop offset="70%" stop-color="#F6E4C6"/>
+      <stop offset="100%" stop-color="#F6E4C6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C98A53"/><stop offset="1" stop-color="#B0784A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- glow halo -->
+  <circle cx="100" cy="88" r="86" fill="url(#halo)"/>
+  <!-- thin gold ring (Vedic halo cue) -->
+  <circle cx="100" cy="84" r="60" fill="none" stroke="#D99A4E" stroke-width="2.2" opacity=".55"/>
+
+  <!-- ears -->
+  <circle cx="46" cy="80" r="20" fill="#B0784A"/><circle cx="154" cy="80" r="20" fill="#B0784A"/>
+  <circle cx="46" cy="80" r="11" fill="#E7C9A0"/><circle cx="154" cy="80" r="11" fill="#E7C9A0"/>
+
+  <!-- head -->
+  <circle cx="100" cy="84" r="52" fill="url(#face)"/>
+  <!-- muzzle -->
+  <ellipse cx="100" cy="98" rx="36" ry="30" fill="#EBD2B4"/>
+  <!-- crown tuft (playful) -->
+  <path d="M100 30c-5 8-4 14 0 20 4-6 5-12 0-20z" fill="#8A5E37"/>
+
+  <!-- tilak mark on forehead (saffron, devotional cue) -->
+  <path d="M100 46c-3 6-3 12 0 16 3-4 3-10 0-16z" fill="#D99A4E"/>
+
+  <!-- eyes, gently closed (calm) -->
+  <path d="M74 84q9 7 18 0" stroke="#5A3D26" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M108 84q9 7 18 0" stroke="#5A3D26" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- soft brows -->
+  <path d="M74 74q9 -4 18 0" stroke="#8A5E37" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <path d="M108 74q9 -4 18 0" stroke="#8A5E37" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+
+  <!-- nose -->
+  <ellipse cx="94" cy="98" rx="2.6" ry="3.4" fill="#7A5638"/><ellipse cx="106" cy="98" rx="2.6" ry="3.4" fill="#7A5638"/>
+  <!-- gentle smile -->
+  <path d="M86 108q14 11 28 0" stroke="#7A5638" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- little rosy cheeks -->
+  <circle cx="76" cy="104" r="6" fill="#E89B6B" opacity=".4"/><circle cx="124" cy="104" r="6" fill="#E89B6B" opacity=".4"/>
+
+  <!-- namaste hands below chin (teal sleeves, devotional) -->
+  <g>
+    <path d="M100 150c-10 0-18-6-22-14 6-3 14-4 22-4s16 1 22 4c-4 8-12 14-22 14z" fill="#4A9EA6"/>
+    <path d="M100 132c-5 0-9 4-10 9h20c-1-5-5-9-10-9z" fill="#EBD2B4"/>
+    <path d="M100 132v18" stroke="#D8BE9A" stroke-width="1.4"/>
+  </g>
+</svg></div>
+          <div><div class="nm">Hanuman</div><div class="rl">AI Yoga Coach</div></div>
+        </div>
+        <div class="msg">"Let's take three slow breaths together — in through the nose, and a long breath out."</div>
+        <div class="chat-foot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9A958A" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/></svg> Live on the classroom whiteboard</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- mini social proof -->
+  <section class="band" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">In good company</span><h2>Schools already breathing easier.</h2></div>
+      <div class="logos">
+        <span class="logo-chip">Hoboken Public Schools</span>
+        <span class="logo-chip">Jersey City Public Schools</span>
+        <span class="logo-chip">Union City School District</span>
+        <span class="logo-chip">Weehawken Township</span>
+        <span class="logo-chip">+ Hudson County charters</span>
+      </div>
+      <div style="display:none;text-align:center;margin-top:28px"><a class="btn btn-ghost" onclick="go('schools')">See participating schools →</a></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="band" style="padding-top:0">
+    <div class="wrap">
+      <div class="ctaband">
+        <h2>Bring calm to your classrooms.</h2>
+        <p>A quick 10-minute Google Meet introduction — Mon–Fri, 3–5 PM ET. We'll send a calendar invite with the link attached.</p>
+        <a class="btn btn-primary" href="mailto:trevorvaughan@hudsonseed.com?subject=HudsonSeed%20intro%20—%20Vendor%209615">Book a 10-min intro</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SCHOOLS ============ -->
+<div class="page" id="schools">
+  <section class="phero"><div class="wrap">
+    <span class="eyebrow">The HudsonSeed network</span>
+    <h1>Participating schools.</h1>
+    <p>From a single classroom to district-wide rollouts — these are the buildings where kids are learning to breathe, focus, and reset. Starting in Hudson County, growing across New Jersey.</p>
+  </div></section>
+  <section class="band" style="padding-top:40px"><div class="wrap">
+    <div class="school-grid">
+      <div class="school reveal"><span class="tag">Union City</span><h4>Union City School District</h4><div class="meta">District-wide · existing partner</div></div>
+      <div class="school reveal"><span class="tag">Hoboken</span><h4>Hoboken Public Schools</h4><div class="meta">Multi-school · K–8</div></div>
+      <div class="school reveal"><span class="tag">Jersey City</span><h4>Jersey City Public Schools</h4><div class="meta">Approved Vendor 9615 · expanding</div></div>
+      <div class="school reveal"><span class="tag">Weehawken</span><h4>Weehawken Township</h4><div class="meta">Existing partner</div></div>
+      <div class="school reveal"><span class="tag">Charter</span><h4>Hudson County Charters</h4><div class="meta">Multiple campuses</div></div>
+      <div class="school reveal" style="border-style:dashed;background:transparent"><span class="tag">Your school?</span><h4>Add your building</h4><div class="meta"><a style="color:var(--teal-d);cursor:pointer" onclick="go('home');setTimeout(()=>scrollTo({top:9e9,behavior:'smooth'}),80)">Book a 10-min intro →</a></div></div>
+    </div>
+    <p class="map-note">Idea for later: a live Hudson County map with pins lighting up as each school joins — turning growth into a visual you can show on a sales call.</p>
+  </div></section>
+</div>
+
+<!-- ============ VOICES / TESTIMONIALS ============ -->
+<div class="page" id="voices">
+  <section class="phero"><div class="wrap">
+    <span class="eyebrow">Voices from the classroom</span>
+    <h1>What educators are saying.</h1>
+    <p>The real test isn't the pitch — it's the room after. Here's what principals, teachers, and wellness leads tell us once HudsonSeed is in the building.</p>
+  </div></section>
+  <section class="band" style="padding-top:40px"><div class="wrap">
+    <div class="quotes">
+      <div class="quote reveal"><span class="mark">"</span><p>The kids ask for it now. We start the afternoon with three breaths and the whole room settles — no worksheets, no prep.</p><div class="who"><b>[Principal name]</b>Elementary School, Hudson County</div></div>
+      <div class="quote reveal"><span class="mark">"</span><p>I'm not a yoga person, and I didn't need to be. It runs on the whiteboard and I just follow along with my class.</p><div class="who"><b>[Teacher name]</b>3rd Grade Teacher</div></div>
+      <div class="quote reveal"><span class="mark">"</span><p>Behavior referrals after lunch dropped noticeably. For what it costs, it's the easiest yes in our wellness budget.</p><div class="who"><b>[Asst. Superintendent]</b>NJ School District</div></div>
+      <div class="quote reveal"><span class="mark">"</span><p>Setup was a non-event. We were running our first session the same morning we said yes.</p><div class="who"><b>[Wellness Coordinator]</b>K–8 Charter</div></div>
+    </div>
+    <p class="map-note">Placeholder quotes — swap in real ones as they come from the beta. Idea: capture a 20-second video clip from each, embedded right in the card.</p>
+  </div></section>
+</div>
+
+<!-- ============ TEAM ============ -->
+<div class="page" id="team">
+  <section class="phero"><div class="wrap">
+    <span class="eyebrow">The people behind it</span>
+    <h1>Built by practitioners.</h1>
+    <p>HudsonSeed isn't a tech company that discovered mindfulness — it's mindfulness teachers who learned to build. Real credentials, real mats, real classrooms.</p>
+  </div></section>
+  <section class="band" style="padding-top:40px"><div class="wrap">
+    <div class="team-grid">
+      <div class="member reveal"><div class="avatar">TV</div><h4>Trevor Vaughan</h4><div class="role">Founder & CEO</div><p>500HR ERYT + RCYT. Director of Children's YTT at YogaRenew. 20 years on Wall Street energy desks before going all-in on kids' wellness.</p></div>
+      <div class="member reveal"><div class="avatar">+</div><h4>[Lead Teacher]</h4><div class="role">Curriculum & Training</div><p>Placeholder — your master trainer who certifies the teachers and shapes the K–12 sequence.</p></div>
+      <div class="member reveal"><div class="avatar">+</div><h4>[Schools Lead]</h4><div class="role">District Partnerships</div><p>Placeholder — the relationship-keeper for principals and superintendents across the network.</p></div>
+      <div class="member reveal"><div class="avatar">🐵</div><h4>Hanuman</h4><div class="role">AI Yoga Coach (beta)</div><p>The on-screen guide in every classroom. Tireless, patient, and always ready for three slow breaths.</p></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============ PARTNERS ============ -->
+<div class="page" id="partners">
+  <section class="phero"><div class="wrap">
+    <span class="eyebrow">Stronger together</span>
+    <h1>Collaborators & partners.</h1>
+    <p>Mindfulness in schools is a team sport. These are the organizations, networks, and allies helping HudsonSeed reach a million kids.</p>
+  </div></section>
+  <section class="band" style="padding-top:40px"><div class="wrap">
+    <div class="partner-grid">
+      <div class="partner reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2F7E82" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div><div><h4>ASAP-NJ</h4><p>Statewide network of 300+ Substance Awareness Coordinators — a channel into schools across New Jersey.</p></div></div>
+      <div class="partner reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2F7E82" stroke-width="1.8"><path d="M12 2l3 7h7l-5.5 4 2 7L12 17l-6.5 3 2-7L2 9h7z"/></svg></div><div><h4>YogaRenew</h4><p>Teacher-training partner — home of the Children's YTT program and the bench of certified instructors.</p></div></div>
+      <div class="partner reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2F7E82" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div><div><h4>Hudson County Districts</h4><p>Union City, Hoboken, Jersey City & Weehawken — the founding cluster proving the model.</p></div></div>
+      <div class="partner reveal" style="border-style:dashed"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2F7E82" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></div><div><h4>Become a partner</h4><p>Grant orgs, district networks, wellness foundations — <a style="color:var(--teal-d);cursor:pointer" onclick="go('home');setTimeout(()=>scrollTo({top:9e9,behavior:'smooth'}),80)">let's talk →</a></p></div></div>
+    </div>
+    <p class="map-note">Idea for later: a "Grant Engine" section — SAMHSA, Title IV-A, 21st Century, CDC — showing the funding paths that make HudsonSeed free to qualifying districts.</p>
+  </div></section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><span class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3C9 7 9 10 12 13C15 10 15 7 12 3Z" fill="#fff"/><path d="M5 12C8 11 11 12 12 15C9 16 6 15 5 12Z" fill="#fff"/><path d="M19 12C16 11 13 12 12 15C15 16 18 15 19 12Z" fill="#fff"/></svg></span>HudsonSeed</div>
+        <p>K–12 yoga & mindfulness for the everyday classroom. On a mission to reach one million kids.</p>
+      </div>
+      <div><h5>Explore</h5><ul>
+        <li><a onclick="go('home')">Home</a></li>
+        <li><a style="display:none" onclick="go('schools')">Schools</a></li>
+        <li><a style="display:none" onclick="go('voices')">Voices</a></li>
+        <li><a style="display:none" onclick="go('team')">Team</a></li>
+        <li><a style="display:none" onclick="go('partners')">Partners</a></li>
+      </ul></div>
+      <div><h5>Get in touch</h5><ul>
+        <li><a href="mailto:trevorvaughan@hudsonseed.com">trevorvaughan@hudsonseed.com</a></li>
+        <li><a>Approved JCPS Vendor 9615</a></li>
+        <li><a onclick="go('home');setTimeout(()=>scrollTo({top:9e9,behavior:'smooth'}),80)">Book a 10-min intro</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 HudsonSeed. All rights reserved.</span>
+      <span>The Science of Calm.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn btn-primary" href="mailto:trevorvaughan@hudsonseed.com?subject=HudsonSeed%20intro%20—%20Vendor%209615">Book a 10-min intro →</a></div>
+
+<script>
+  function go(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.getElementById('nav').classList.remove('open');
+    window.scrollTo(0,0);
+    runReveal();
+  }
+  function runReveal(){
+    const els=document.querySelectorAll('.page.active .reveal');
+    els.forEach((el,i)=>{
+      const io=new IntersectionObserver((ents)=>{
+        ents.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*70);io.unobserve(e.target)}});
+      },{threshold:.15});
+      io.observe(el);
+    });
+  }
+  runReveal();
+</script>
+</body>
+</html>
