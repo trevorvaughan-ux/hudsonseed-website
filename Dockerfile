@@ -1,3 +1,4 @@
+# HudsonSeed Dockerfile | last updated 2026-06-05 (June 5, 2026) | serves claude.html as homepage + gemini.mp4
 FROM caddy:2-alpine
 
 # New Science of Calm site becomes the homepage

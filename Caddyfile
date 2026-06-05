@@ -1,3 +1,4 @@
+# HudsonSeed Caddyfile | last updated 2026-06-05 (June 5, 2026) | static serving on $PORT, no-cache HTML
 :{$PORT} {
     root * /srv
     file_server
