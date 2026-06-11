@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<!-- HudsonSeed Science of Calm site | last updated 2026-06-05 (June 5, 2026) | served as homepage via Railway -->
+<!-- HudsonSeed Science of Calm site | last updated 2026-06-10 (June 10, 2026) | served as homepage via Railway -->
 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HudsonSeed — The Science of Calm</title>
+  <title>HudsonSeed | The Science of Calm</title>
+  <meta name="description" content="K-12 yoga and mindfulness, built for the everyday classroom. 100% asynchronous, on-demand. Press play, catch your breath." />
+  <meta property="og:title" content="HudsonSeed | The Science of Calm" />
+  <meta property="og:description" content="K-12 yoga and mindfulness for the everyday classroom. 100% asynchronous, on-demand. Press play, catch your breath." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.hudsonseed.com" />
+  <meta property="og:image" content="https://www.hudsonseed.com/poster.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -654,7 +660,7 @@
 
       <!-- VIDEO -->
       <div class="video-wrapper">
-        <video autoplay muted loop playsinline>
+        <video id="herovideo" autoplay muted loop playsinline poster="poster.jpg">
           <source src="gemini.mp4" type="video/mp4" />
         </video>
       </div>
@@ -734,7 +740,7 @@
         </div>
       </div>
       <div class="reveal reveal-delay-2" style="text-align:center">
-        <button class="play-button" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})">
+        <button class="play-button" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'}); var v=document.getElementById('herovideo'); if(v){v.muted=true; v.play().catch(function(){v.controls=true;});}">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <polygon points="5,3 19,12 5,21"/>
           </svg>
@@ -824,5 +830,14 @@
     });
   </script>
 
+<script>
+  /* 2026-06-10: autoplay fallback. If the browser blocks autoplay (Low Power Mode, data saver), show native controls so one tap plays the hero video instead of rendering an invisible box. */
+  (function () {
+    var v = document.getElementById('herovideo');
+    if (!v) return;
+    var p = v.play();
+    if (p && p.catch) { p.catch(function () { v.controls = true; }); }
+  })();
+</script>
 </body>
 </html>
