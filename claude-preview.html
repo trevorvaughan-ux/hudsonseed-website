@@ -746,7 +746,7 @@
 
       <!-- VIDEO -->
       <div class="video-wrapper">
-        <video id="herovideo" muted playsinline controls poster="poster.jpg">
+        <video id="herovideo" playsinline controls poster="poster.jpg">
           <source src="gemini.mp4" type="video/mp4" />
         </video>
       </div>
@@ -813,7 +813,7 @@
         </div>
       </div>
       <div class="reveal reveal-delay-2" style="text-align:center">
-        <button class="play-button" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'}); var v=document.getElementById('herovideo'); if(v){v.muted=true; v.play().catch(function(){v.controls=true;});}">
+        <button class="play-button" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'}); var v=document.getElementById('herovideo'); if(v){v.muted=false; v.play().catch(function(){v.controls=true;});}">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <polygon points="5,3 19,12 5,21"/>
           </svg>
