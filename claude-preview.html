@@ -730,7 +730,7 @@
       <p class="hero-tagline" style="opacity:1">100% asynchronous &nbsp;·&nbsp; on-demand &nbsp;·&nbsp; press play</p>
 
       <div class="hero-photo" style="margin:38px auto 0;max-width:800px;">
-        <video id="childvideo" autoplay muted loop playsinline preload="metadata" aria-label="Child meditating in a classroom" style="width:100%;height:auto;display:block;border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,0.30);">
+        <video id="childvideo" autoplay muted loop playsinline preload="auto" aria-label="Child meditating in a classroom" style="width:100%;height:auto;display:block;border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,0.30);">
           <source src="child-meditating.mp4" type="video/mp4" />
         </video>
       </div>
@@ -950,12 +950,12 @@
   </script>
 
 <script>
-  /* 2026-06-10: autoplay fallback. If the browser blocks autoplay (Low Power Mode, data saver), show native controls so one tap plays the hero video instead of rendering an invisible box. */
+  /* 2026-07-12: ambient child video is the only autoplayer now. Nudge it in case the browser blocks the autoplay attribute; demo video (herovideo) plays on click only. */
   (function () {
-    var v = document.getElementById('herovideo');
+    var v = document.getElementById('childvideo');
     if (!v) return;
     var p = v.play();
-    if (p && p.catch) { p.catch(function () { v.controls = true; }); }
+    if (p && p.catch) { p.catch(function () {}); }
   })();
 </script>
 
