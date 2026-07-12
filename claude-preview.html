@@ -729,10 +729,11 @@
       <p class="hero-sub" style="opacity:1">K–12 yoga &amp; mindfulness, built for the everyday classroom.</p>
       <p class="hero-tagline" style="opacity:1">100% asynchronous &nbsp;·&nbsp; on-demand &nbsp;·&nbsp; press play</p>
 
-      <div class="hero-photo" style="margin:38px auto 0;max-width:800px;">
+      <div class="hero-photo" style="margin:38px auto 0;max-width:800px;position:relative;">
         <video id="childvideo" autoplay muted loop playsinline preload="auto" aria-label="Child meditating in a classroom" style="width:100%;height:auto;display:block;border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,0.30);">
           <source src="child-meditating.mp4" type="video/mp4" />
         </video>
+        <button id="childSound" aria-label="Toggle sound" style="position:absolute;bottom:16px;right:16px;z-index:2;background:rgba(47,107,110,0.85);color:#FDF8F0;border:none;border-radius:999px;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.25);">&#128266; Tap for sound</button>
       </div>
 
       <div class="try-now">
@@ -980,6 +981,17 @@
         document.addEventListener(ev, tryPlay, {passive:true});
       });
       document.addEventListener('visibilitychange', tryPlay);
+      // Tap-for-sound: the child video carries the girl's voice ("I am calm").
+      var chip = document.getElementById('childSound');
+      function setChip(){ if(chip) chip.innerHTML = cv.muted ? '&#128266; Tap for sound' : '&#128263; Mute'; }
+      function toggleSound(){
+        cv.muted = !cv.muted;
+        if(!cv.muted){ if(!hv.paused) hv.pause(); cv.play().catch(function(){}); }
+        setChip();
+      }
+      if(chip) chip.addEventListener('click', function(e){ e.stopPropagation(); toggleSound(); });
+      cv.addEventListener('click', toggleSound);
+      setChip();
       if('IntersectionObserver' in window){
         new IntersectionObserver(function(es){
           es.forEach(function(e){ if(e.isIntersecting){ tryPlay(); } else { cv.pause(); } });
