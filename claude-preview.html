@@ -969,7 +969,7 @@
     (function(){
       var cv=document.getElementById('childvideo'), hv=document.getElementById('herovideo');
       if(!cv||!hv) return;
-      hv.addEventListener('play', function(){ cv.pause(); });
+      hv.addEventListener('play', function(){ cv.pause(); hv.muted=false; hv.volume=1.0; });
       function resume(){ if(hv.paused || hv.ended){ cv.play().catch(function(){}); } }
       hv.addEventListener('pause', resume);
       hv.addEventListener('ended', resume);
