@@ -973,6 +973,18 @@
       function resume(){ if(hv.paused || hv.ended){ cv.play().catch(function(){}); } }
       hv.addEventListener('pause', resume);
       hv.addEventListener('ended', resume);
+      // Robust ambient autoplay: battery savers and strict autoplay policies can
+      // leave the muted loop paused. Retry on first interaction and when visible.
+      function tryPlay(){ if(cv.paused && (hv.paused || hv.ended)) cv.play().catch(function(){}); }
+      ['click','touchstart','scroll','keydown','pointerdown'].forEach(function(ev){
+        document.addEventListener(ev, tryPlay, {passive:true});
+      });
+      document.addEventListener('visibilitychange', tryPlay);
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(es){
+          es.forEach(function(e){ if(e.isIntersecting){ tryPlay(); } else { cv.pause(); } });
+        }, {threshold:0.15}).observe(cv);
+      }
     })();
 </script>
 </body>
