@@ -967,7 +967,7 @@
 </html>
 
 
-<!-- HS BILINGUAL + HANUMAN BIGCARDS v4 (ES player launch) | append-only | built 2026-07-21 -->
+<!-- HS BILINGUAL + HANUMAN BIGCARDS v5 (nbsp-safe swap) | append-only | built 2026-07-21 -->
 <script>
 (function(){
 'use strict';
@@ -1000,7 +1000,7 @@ function swap(m){
     if(!p)continue;
     if(p.closest('#hsov,#hanuman-float,#hanuman-speech,script,style'))continue;
     var t=n.nodeValue.replace(/\s+/g,' ').trim();
-    if(t&&Object.prototype.hasOwnProperty.call(m,t)){n.nodeValue=n.nodeValue.replace(t,m[t]);}
+    if(t&&Object.prototype.hasOwnProperty.call(m,t)){var re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/ /g,'\\s+'));n.nodeValue=n.nodeValue.replace(re,m[t]);}
   }
   var g=document.getElementById('hsLangTg');
   if(g)g.textContent=(lang==='en')?'EN | ES':'ES | EN';
