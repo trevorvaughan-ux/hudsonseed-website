@@ -5,6 +5,8 @@ FROM caddy:2-alpine
 COPY claude.html /srv/index.html
 COPY claude.html /srv/claude.html
 COPY gemini.mp4 /srv/gemini.mp4
+COPY child-meditating.mp4 /srv/child-meditating.mp4
+COPY preview-v6.html /srv/preview-v6.html
 COPY poster.jpg /srv/poster.jpg
 
 # Old site preserved, still reachable
