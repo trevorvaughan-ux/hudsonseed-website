@@ -8,6 +8,8 @@ COPY gemini.mp4 /srv/gemini.mp4
 COPY child-meditating.mp4 /srv/child-meditating.mp4
 COPY preview-v6.html /srv/preview-v6.html
 COPY poster.jpg /srv/poster.jpg
+COPY balloon-breath-thumb.jpg /srv/balloon-breath-thumb.jpg
+COPY triangle-pose-thumb.jpg /srv/triangle-pose-thumb.jpg
 
 # Old site preserved, still reachable
 COPY index.html /srv/index-legacy.html
