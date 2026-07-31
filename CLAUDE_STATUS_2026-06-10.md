@@ -5,7 +5,7 @@
 - SEO meta description + OpenGraph tags added (og:image = poster.jpg)
 - Hero video: poster frame extracted + added, id=herovideo, autoplay-rejection fallback shows controls (was rendering an INVISIBLE box when autoplay blocked - root cause of "video not on website")
 - "Watch the video" play button now scrolls AND plays
-- Copy mirrored to deck v2: beta language removed, Worth It = "less than the cost of one PD day", children->kids, em-dashes stripped everywhere, Hanuman bubble: "I'm here whenever your class needs a reset."
+- Copy mirrored to deck v2: beta language removed, Worth It = "less than the cost of one PD day", children->kids, em-dashes stripped everywhere, Hani bubble: "I'm here whenever your class needs a reset."
 
 ## Open
 - Railway deploy trigger UNVERIFIED for these pushes. If live tab title still shows a dash instead of pipe: redeploy website service manually in Railway dashboard.
