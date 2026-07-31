@@ -447,7 +447,7 @@
       transform: translateY(-2px);
     }
 
-    /* Hanuman chat card */
+    /* Hani chat card */
     .chat-card {
       background: var(--white);
       border-radius: 20px;
@@ -707,7 +707,7 @@
     <ul class="nav-links">
       <li><a href="#why">Why it Works</a></li>
       <li><a href="#sanity">For Teachers</a></li>
-      <li><a href="#hanuman">Hanuman AI</a></li>
+      <li><a href="#hanuman">Hani AI</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a class="nav-cta" href="mailto:trevorvaughan@hudsonseed.com?subject=HudsonSeed%20for%20our%20school">Contact Us</a>
@@ -808,7 +808,7 @@
       <div class="reveal">
         <p class="sanity-eyebrow">Built to Save Teacher Sanity</p>
         <h2 class="sanity-title">Press play.<br>Catch your breath.</h2>
-        <p class="sanity-body">Chaotic transition after recess? A teacher doesn't prep a lesson or schedule a session. They pull up Hanuman on the whiteboard, press play, and let the coach guide the room for two minutes while they catch their breath.</p>
+        <p class="sanity-body">Chaotic transition after recess? A teacher doesn't prep a lesson or schedule a session. They pull up Hani on the whiteboard, press play, and let the coach guide the room for two minutes while they catch their breath.</p>
         <div class="sanity-badge">
           <span>2 minutes</span> &nbsp;·&nbsp; <span>on demand</span>
         </div>
@@ -829,7 +829,7 @@
     <div class="hanuman-inner">
       <div class="reveal">
         <p class="hanuman-eyebrow">On the Whiteboard</p>
-        <h2 class="hanuman-title">Meet Hanuman,<br>your AI yoga coach</h2>
+        <h2 class="hanuman-title">Meet Hani,<br>your AI yoga coach</h2>
         <p class="hanuman-body">A friendly on-screen guide that leads breathing and movement right on the classroom whiteboard, so any teacher can run a calm, confident session with zero training.</p>
         <a href="#" class="hanuman-cta">Built into the HudsonSeed whiteboard app</a>
       </div>
@@ -839,7 +839,7 @@
           <div class="chat-header">
             <div class="chat-avatar">🐻</div>
             <div>
-              <div class="chat-name">Hanuman</div>
+              <div class="chat-name">Hani</div>
               <div class="chat-role">AI Yoga Coach</div>
             </div>
           </div>
@@ -911,15 +911,15 @@
   </footer>
 
   <!-- HANUMAN FLOATING BUTTON -->
-  <button id="hanuman-float" onclick="toggleSpeech()" title="Say hi to Hanuman">🐻</button>
+  <button id="hanuman-float" onclick="toggleSpeech()" title="Say hi to Hani">🐻</button>
 
   <div id="hanuman-speech">
-    <div class="speech-name">Hanuman · AI Yoga Coach</div>
-    Hi, I'm Hanuman, your yoga coach. I'm here whenever your class needs a reset.
+    <div class="speech-name">Hani · AI Yoga Coach</div>
+    Hi, I'm Hani, your yoga coach. I'm here whenever your class needs a reset.
   </div>
 
   <script>
-    // Hanuman speech toggle
+    // Hani speech toggle
     function toggleSpeech() {
       const bubble = document.getElementById('hanuman-speech');
       bubble.classList.toggle('visible');
@@ -967,7 +967,7 @@
     function hsClose(){document.getElementById('hsov').style.display='none';document.getElementById('hsovf').src='';document.body.style.overflow='';}
     var hsSndMuted=true;
     function hsSndTgl(){var v=document.getElementById('childvideo'),ic=document.getElementById('hsSndIc'),tx=document.getElementById('hsSndTx');if(!v)return;hsSndMuted=!hsSndMuted;v.muted=hsSndMuted;if(!hsSndMuted){v.play().catch(function(){});}var es=document.documentElement.lang==='es';ic.textContent=hsSndMuted?'\uD83D\uDD0A':'\uD83D\uDD07';tx.textContent=hsSndMuted?(es?'Toca para o\u00edr':'Tap for sound'):(es?'Silenciar':'Mute');}
-    // Only one video/audio at a time: ambient child loop yields to demo video and Hanuman players
+    // Only one video/audio at a time: ambient child loop yields to demo video and Hani players
     (function(){
       var cv=document.getElementById('childvideo'), hv=document.getElementById('herovideo');
       if(cv&&hv){
@@ -992,7 +992,7 @@
 (function(){
 'use strict';
 /* v7: replaced flat SVG cartoon art with real video-frame thumbnail images (the actual
-   Pixar-style Hanuman renders that play on click) so the card cover matches the video
+   Pixar-style Hani renders that play on click) so the card cover matches the video
    quality instead of undercutting it. EN|ES toggle in nav, session-only language (always
    defaults to EN), text swap excludes players/overlay/float widget. Cards matched by
    onclick id (not text) so copy can change freely without breaking the card builder. */
@@ -1014,7 +1014,7 @@ css.textContent=[
 '#hsLangTg:hover{color:var(--teal);}'
 ].join('\n');
 document.head.appendChild(css);
-var D={"The Science of Calm": "La Ciencia de la Calma", "K\u201312 Mindfulness & Movement": "Mindfulness y movimiento K\u201312", "K\u201312 yoga & mindfulness, built for the everyday classroom.": "Yoga y mindfulness K\u201312, hecho para el sal\u00f3n de todos los d\u00edas.", "100% asynchronous \u00b7 on-demand \u00b7 press play": "100% asincr\u00f3nico \u00b7 a demanda \u00b7 presiona play", "Press play \u00b7 catch your breath": "Presiona play \u00b7 recupera el aliento", "Two of the resets running in classrooms right now \u2014 tap one, it plays right here. Free, no sign-up.": "Dos de los resets que ya funcionan en salones de clase. Toca uno y se reproduce aqu\u00ed mismo. Gratis, sin registro.", "Calm down \u00b7 2 min \u00b7 all ages": "Calma \u00b7 2 min \u00b7 todas las edades", "Chair yoga \u00b7 balance": "Yoga de silla \u00b7 equilibrio", "Why it Works": "Por qu\u00e9 funciona", "For Teachers": "Para maestros", "Hanuman AI": "Hanuman IA", "Contact": "Contacto", "Contact Us": "Cont\u00e1ctanos", "Why Principals Say Yes": "Por qu\u00e9 los directores dicen s\u00ed", "Trusted. Effortless. Worth it.": "Confiable. Sin esfuerzo. Vale la pena.", "Trusted": "Confiable", "Already in 7,000 teachers' rooms and 100,000+ kids' classrooms across the region.": "Ya est\u00e1 en los salones de 7,000 maestros y en las aulas de m\u00e1s de 100,000 ni\u00f1os en la regi\u00f3n.", "Effortless": "Sin esfuerzo", "100% asynchronous. No prep, no scheduling, no specialist. A teacher presses play whenever the moment is right.": "100% asincr\u00f3nico. Sin preparaci\u00f3n, sin horarios, sin especialista. El maestro presiona play cuando el momento es el adecuado.", "Worth it": "Vale la pena", "Big impact for less than the cost of one PD day. An easy yes.": "Gran impacto por menos del costo de un d\u00eda de capacitaci\u00f3n. Un s\u00ed f\u00e1cil.", "Built to Save Teacher Sanity": "Hecho para cuidar la cordura del maestro", "Press play.": "Presiona play.", "Catch your breath.": "Recupera el aliento.", "Chaotic transition after recess? A teacher doesn't prep a lesson or schedule a session. They pull up Hanuman on the whiteboard, press play, and let the coach guide the room for two minutes while they catch their breath.": "\u00bfTransici\u00f3n ca\u00f3tica despu\u00e9s del recreo? El maestro no prepara una lecci\u00f3n ni agenda una sesi\u00f3n. Abre Hanuman en la pizarra, presiona play, y deja que el coach gu\u00ede al sal\u00f3n por dos minutos mientras recupera el aliento.", "2 minutes": "2 minutos", "on demand": "a demanda", "Watch the video": "Mira el video", "On the Whiteboard": "En la pizarra", "Meet Hanuman,": "Conoce a Hanuman,", "your AI yoga coach": "tu coach de yoga con IA", "A friendly on-screen guide that leads breathing and movement right on the classroom whiteboard, so any teacher can run a calm, confident session with zero training.": "Un gu\u00eda amigable en pantalla que dirige respiraci\u00f3n y movimiento directamente en la pizarra del sal\u00f3n, para que cualquier maestro pueda dar una sesi\u00f3n tranquila y segura sin capacitaci\u00f3n.", "Built into the HudsonSeed whiteboard app": "Integrado en la pizarra de HudsonSeed", "AI Yoga Coach": "Coach de Yoga IA", "\"Let's take three slow breaths together. In through the nose, and a long breath out.\"": "\"Tomemos tres respiraciones lentas juntos. Entra por la nariz, y suelta el aire largo y despacio.\"", "Live on the classroom whiteboard": "En vivo en la pizarra del sal\u00f3n", "Bring HudsonSeed to your school": "Lleva HudsonSeed a tu escuela", "Ten minutes. Every classroom. Starting now.": "Diez minutos. Cada sal\u00f3n. Empezando ahora.", "Set up a meeting": "Agenda una reuni\u00f3n", "10 minutes \u00b7 less than the cost of one PD day": "10 minutos \u00b7 menos del costo de un d\u00eda de capacitaci\u00f3n", "teachers": "maestros", "kids": "ni\u00f1os", "whiteboard, nothing else": "pizarra, nada m\u00e1s", "How Every Session Ends": "As\u00ed termina cada sesi\u00f3n", "I am happy.": "Soy feliz.", "I am safe.": "Estoy seguro.", "I am brave.": "Soy valiente.", "I am strong.": "Soy fuerte.", "I am love.": "Soy amor.", "10 minutes is all we ask.": "Solo pedimos 10 minutos.", "Less than the cost of one PD day.": "Menos del costo de un d\u00eda de capacitaci\u00f3n.", "K\u201312 yoga & mindfulness \u00b7 Jersey City, NJ": "Yoga y mindfulness K\u201312 \u00b7 Jersey City, NJ", "Tap for sound": "Toca para o\u00edr", "Mute": "Silenciar", "Balloon Breath": "Respiraci\u00f3n de Globo", "Triangle Pose": "Postura del Tri\u00e1ngulo"};
+var D={"The Science of Calm": "La Ciencia de la Calma", "K\u201312 Mindfulness & Movement": "Mindfulness y movimiento K\u201312", "K\u201312 yoga & mindfulness, built for the everyday classroom.": "Yoga y mindfulness K\u201312, hecho para el sal\u00f3n de todos los d\u00edas.", "100% asynchronous \u00b7 on-demand \u00b7 press play": "100% asincr\u00f3nico \u00b7 a demanda \u00b7 presiona play", "Press play \u00b7 catch your breath": "Presiona play \u00b7 recupera el aliento", "Two of the resets running in classrooms right now \u2014 tap one, it plays right here. Free, no sign-up.": "Dos de los resets que ya funcionan en salones de clase. Toca uno y se reproduce aqu\u00ed mismo. Gratis, sin registro.", "Calm down \u00b7 2 min \u00b7 all ages": "Calma \u00b7 2 min \u00b7 todas las edades", "Chair yoga \u00b7 balance": "Yoga de silla \u00b7 equilibrio", "Why it Works": "Por qu\u00e9 funciona", "For Teachers": "Para maestros", "Hani AI": "Hani IA", "Contact": "Contacto", "Contact Us": "Cont\u00e1ctanos", "Why Principals Say Yes": "Por qu\u00e9 los directores dicen s\u00ed", "Trusted. Effortless. Worth it.": "Confiable. Sin esfuerzo. Vale la pena.", "Trusted": "Confiable", "Already in 7,000 teachers' rooms and 100,000+ kids' classrooms across the region.": "Ya est\u00e1 en los salones de 7,000 maestros y en las aulas de m\u00e1s de 100,000 ni\u00f1os en la regi\u00f3n.", "Effortless": "Sin esfuerzo", "100% asynchronous. No prep, no scheduling, no specialist. A teacher presses play whenever the moment is right.": "100% asincr\u00f3nico. Sin preparaci\u00f3n, sin horarios, sin especialista. El maestro presiona play cuando el momento es el adecuado.", "Worth it": "Vale la pena", "Big impact for less than the cost of one PD day. An easy yes.": "Gran impacto por menos del costo de un d\u00eda de capacitaci\u00f3n. Un s\u00ed f\u00e1cil.", "Built to Save Teacher Sanity": "Hecho para cuidar la cordura del maestro", "Press play.": "Presiona play.", "Catch your breath.": "Recupera el aliento.", "Chaotic transition after recess? A teacher doesn't prep a lesson or schedule a session. They pull up Hani on the whiteboard, press play, and let the coach guide the room for two minutes while they catch their breath.": "\u00bfTransici\u00f3n ca\u00f3tica despu\u00e9s del recreo? El maestro no prepara una lecci\u00f3n ni agenda una sesi\u00f3n. Abre Hani en la pizarra, presiona play, y deja que el coach gu\u00ede al sal\u00f3n por dos minutos mientras recupera el aliento.", "2 minutes": "2 minutos", "on demand": "a demanda", "Watch the video": "Mira el video", "On the Whiteboard": "En la pizarra", "Meet Hani,": "Conoce a Hani,", "your AI yoga coach": "tu coach de yoga con IA", "A friendly on-screen guide that leads breathing and movement right on the classroom whiteboard, so any teacher can run a calm, confident session with zero training.": "Un gu\u00eda amigable en pantalla que dirige respiraci\u00f3n y movimiento directamente en la pizarra del sal\u00f3n, para que cualquier maestro pueda dar una sesi\u00f3n tranquila y segura sin capacitaci\u00f3n.", "Built into the HudsonSeed whiteboard app": "Integrado en la pizarra de HudsonSeed", "AI Yoga Coach": "Coach de Yoga IA", "\"Let's take three slow breaths together. In through the nose, and a long breath out.\"": "\"Tomemos tres respiraciones lentas juntos. Entra por la nariz, y suelta el aire largo y despacio.\"", "Live on the classroom whiteboard": "En vivo en la pizarra del sal\u00f3n", "Bring HudsonSeed to your school": "Lleva HudsonSeed a tu escuela", "Ten minutes. Every classroom. Starting now.": "Diez minutos. Cada sal\u00f3n. Empezando ahora.", "Set up a meeting": "Agenda una reuni\u00f3n", "10 minutes \u00b7 less than the cost of one PD day": "10 minutos \u00b7 menos del costo de un d\u00eda de capacitaci\u00f3n", "teachers": "maestros", "kids": "ni\u00f1os", "whiteboard, nothing else": "pizarra, nada m\u00e1s", "How Every Session Ends": "As\u00ed termina cada sesi\u00f3n", "I am happy.": "Soy feliz.", "I am safe.": "Estoy seguro.", "I am brave.": "Soy valiente.", "I am strong.": "Soy fuerte.", "I am love.": "Soy amor.", "10 minutes is all we ask.": "Solo pedimos 10 minutos.", "Less than the cost of one PD day.": "Menos del costo de un d\u00eda de capacitaci\u00f3n.", "K\u201312 yoga & mindfulness \u00b7 Jersey City, NJ": "Yoga y mindfulness K\u201312 \u00b7 Jersey City, NJ", "Tap for sound": "Toca para o\u00edr", "Mute": "Silenciar", "Balloon Breath": "Respiraci\u00f3n de Globo", "Triangle Pose": "Postura del Tri\u00e1ngulo"};
 var R={};Object.keys(D).forEach(function(k){R[D[k]]=k;});
 var lang='en';
 function swap(m){
