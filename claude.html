@@ -691,6 +691,36 @@
     #hsov{display:none;position:fixed;inset:0;z-index:9999;background:rgba(18,28,28,.85);}
     #hsov iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
     #hsovClose{position:absolute;top:16px;right:20px;z-index:2;background:#fff;border:none;width:46px;height:46px;border-radius:50%;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+
+    /* LEAD CAPTURE CTA MODAL | added 2026-07-31 */
+    .cta-overlay{display:none;position:fixed;inset:0;background:rgba(58,58,58,0.55);z-index:9999;align-items:center;justify-content:center;padding:20px;}
+    .cta-overlay.open{display:flex;}
+    .cta-modal{background:var(--cream);border-radius:16px;max-width:440px;width:100%;padding:32px 28px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);max-height:88vh;overflow-y:auto;}
+    .cta-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.6rem;color:var(--muted);cursor:pointer;line-height:1;}
+    .cta-close:hover{color:var(--charcoal);}
+    .cta-greeting{display:flex;gap:12px;align-items:flex-start;margin-bottom:22px;}
+    .cta-emoji{font-size:2rem;flex-shrink:0;}
+    .cta-greeting p{margin:0;font-size:0.98rem;line-height:1.55;color:var(--charcoal);}
+    .cta-roles{display:flex;flex-direction:column;gap:10px;}
+    .cta-role-btn{display:block;width:100%;text-align:left;padding:14px 16px;border-radius:10px;border:1.5px solid var(--teal-light);background:var(--white);color:var(--teal-dark);font-family:'DM Sans',sans-serif;font-size:0.96rem;font-weight:600;cursor:pointer;transition:all .15s;}
+    .cta-role-btn:hover{border-color:var(--teal);background:var(--teal-light);}
+    .cta-step h3{font-family:'Playfair Display',serif;color:var(--teal-dark);margin:0 0 6px 0;font-size:1.3rem;}
+    .cta-step .cta-sub{margin:0 0 18px 0;color:var(--muted);font-size:0.9rem;}
+    .cta-field{margin-bottom:14px;}
+    .cta-field label{display:block;font-size:0.82rem;font-weight:600;color:var(--charcoal);margin-bottom:5px;}
+    .cta-field input{width:100%;padding:10px 12px;border-radius:8px;border:1.5px solid var(--teal-light);font-family:'DM Sans',sans-serif;font-size:0.95rem;background:var(--white);box-sizing:border-box;}
+    .cta-field input:focus{outline:none;border-color:var(--teal);}
+    .cta-submit{width:100%;margin-top:6px;padding:13px;border-radius:8px;border:none;background:var(--teal-dark);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.98rem;cursor:pointer;}
+    .cta-submit:hover{background:var(--teal);}
+    .cta-submit:disabled{opacity:0.6;cursor:default;}
+    .cta-back{background:none;border:none;color:var(--teal);font-size:0.85rem;cursor:pointer;margin-bottom:14px;padding:0;font-family:'DM Sans',sans-serif;}
+    .cta-thanks{text-align:center;padding:10px 0;}
+    .cta-thanks-emoji{font-size:2.4rem;display:block;margin-bottom:10px;}
+    .cta-thanks h3{margin-bottom:8px;}
+    .cta-thanks p{color:var(--charcoal);line-height:1.6;font-size:0.96rem;}
+    .cta-link-btn{display:inline-block;margin-top:16px;padding:12px 24px;border-radius:8px;background:var(--teal-dark);color:var(--white)!important;text-decoration:none;font-weight:700;font-size:0.92rem;}
+    .cta-error{color:#c0392b;font-size:0.85rem;margin-top:8px;}
+    @media (max-width:480px){.cta-modal{padding:26px 20px;}}
 </style>
 </head>
 <body>
@@ -710,7 +740,7 @@
       <li><a href="#hanuman">Hani AI</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="nav-cta" href="mailto:trevorvaughan@hudsonseed.com?subject=HudsonSeed%20for%20our%20school">Contact Us</a>
+    <a class="nav-cta" href="#" onclick="ctaOpen('website_contact_button');return false;">Contact Us</a>
   </nav>
 
   <!-- SLIDE 1: HERO -->
@@ -892,7 +922,7 @@
     <div class="contact-divider"></div>
     <p class="contact-ask">10 minutes is all we ask.</p>
     <p class="contact-money">Less than the cost of one PD day.</p>
-    <a class="contact-cta" href="mailto:trevorvaughan@hudsonseed.com?subject=HudsonSeed%20for%20our%20school">Contact Us</a>
+    <a class="contact-cta" href="#" onclick="ctaOpen('website_contact_button');return false;">Contact Us</a>
     <p class="contact-alt">
       HudsonSeed &middot; Jersey City, NJ<br>
       <a href="mailto:trevorvaughan@hudsonseed.com">trevorvaughan@hudsonseed.com</a> &middot; <a href="tel:+18623714966">862.371.4966</a>
@@ -911,11 +941,43 @@
   </footer>
 
   <!-- HANUMAN FLOATING BUTTON -->
-  <button id="hanuman-float" onclick="toggleSpeech()" title="Say hi to Hani">🐻</button>
+  <button id="hanuman-float" onclick="ctaOpen('website_widget_cta')" title="Say hi to Hani">🐻</button>
 
   <div id="hanuman-speech">
     <div class="speech-name">Hani · AI Yoga Coach</div>
     Hi, I'm Hani, your yoga coach. I'm here whenever your class needs a reset.
+  </div>
+
+  <!-- LEAD CAPTURE CTA MODAL | added 2026-07-31 -->
+  <div id="ctaOverlay" class="cta-overlay" onclick="if(event.target===this)ctaClose()">
+    <div class="cta-modal">
+      <button class="cta-close" onclick="ctaClose()" aria-label="Close">&times;</button>
+
+      <div id="ctaStepRole" class="cta-step">
+        <div class="cta-greeting">
+          <span class="cta-emoji">🐻</span>
+          <p><strong>Hi, I'm Hani.</strong> I'm here whenever your class needs a reset. Tell me a bit about you and I'll get you what you need:</p>
+        </div>
+        <div class="cta-roles">
+          <button class="cta-role-btn" onclick="ctaPickRole('teacher')">🍎&nbsp;&nbsp;I'm a Teacher</button>
+          <button class="cta-role-btn" onclick="ctaPickRole('admin')">🏫&nbsp;&nbsp;I'm a District Admin / Principal</button>
+          <button class="cta-role-btn" onclick="ctaPickRole('parent')">👋&nbsp;&nbsp;I'm a Parent</button>
+        </div>
+      </div>
+
+      <div id="ctaStepForm" class="cta-step" style="display:none">
+        <button class="cta-back" onclick="ctaBack()">&larr; Back</button>
+        <h3 id="ctaFormTitle"></h3>
+        <p class="cta-sub" id="ctaFormSub"></p>
+        <form id="ctaForm" onsubmit="ctaSubmit(event)">
+          <div id="ctaFormFields"></div>
+          <button type="submit" class="cta-submit" id="ctaSubmitBtn"></button>
+          <div class="cta-error" id="ctaError" style="display:none"></div>
+        </form>
+      </div>
+
+      <div id="ctaStepThanks" class="cta-step cta-thanks" style="display:none"></div>
+    </div>
   </div>
 
   <script>
@@ -961,6 +1023,151 @@
 </script>
 
   <div id="hsov"><button id="hsovClose" onclick="hsClose()">&times;</button><iframe id="hsovf" allow="autoplay"></iframe></div>
+  <script>
+  /* LEAD CAPTURE CTA LOGIC | added 2026-07-31. Zero AI cost: static form, direct Supabase insert. */
+  (function(){
+    var CTA_ENDPOINT = 'https://pebhikfbpgntedvbxqph.supabase.co/rest/v1/crm_contacts';
+    var CTA_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlYmhpa2ZicGdudGVkdmJ4cXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDg2ODEsImV4cCI6MjA5MjM4NDY4MX0.h2-mXnf8WAt3canjhSwDjQVgAhpThhTZl9IvEee_DK4';
+    var ctaOrigin = 'website_widget_cta';
+    var ctaRole = null;
+
+    var FIELD_DEFS = {
+      teacher: {
+        title: "Get 5 Free Sanity-Saver Resets",
+        sub: "Instant access to five press-play breathing & movement exercises for your classroom.",
+        submitLabel: "Send Me the Resets",
+        fields: [
+          {name:'full_name', label:'Your name', type:'text', required:false},
+          {name:'email', label:'Work email', type:'email', required:true},
+          {name:'district', label:'School / district', type:'text', required:true},
+          {name:'grade', label:'Grade level (optional)', type:'text', required:false}
+        ],
+        thanksTitle: "You're all set!",
+        thanksBody: "Check your inbox — we're sending your 5 free resets now. In the meantime, here's the full whiteboard tool:",
+        thanksLinkText: "Open the Whiteboard",
+        thanksLinkHref: "https://trevorvaughan-ux.github.io/hanuman-demo/whiteboard.html"
+      },
+      admin: {
+        title: "Request the Vendor & Pricing Pack",
+        sub: "We'll send our JCPS (#9615) and NJ SBE (#V00108320) approved-vendor sheet, curriculum alignment, and district pricing.",
+        submitLabel: "Send Me the Pack",
+        fields: [
+          {name:'full_name', label:'Your name', type:'text', required:true},
+          {name:'email', label:'Work email', type:'email', required:true},
+          {name:'district', label:'School / district', type:'text', required:true},
+          {name:'phone', label:'Phone (optional)', type:'tel', required:false}
+        ],
+        thanksTitle: "Got it!",
+        thanksBody: "We'll email your vendor & pricing pack shortly. Want to skip the wait?",
+        thanksLinkText: "Email Trevor directly",
+        thanksLinkHref: "mailto:trevorvaughan@hudsonseed.com?subject=HudsonSeed%20for%20our%20school"
+      },
+      parent: {
+        title: "Keep Me Posted",
+        sub: "We'll let you know when HudsonSeed comes to your child's school.",
+        submitLabel: "Keep Me Posted",
+        fields: [
+          {name:'full_name', label:'Your name', type:'text', required:false},
+          {name:'email', label:'Email', type:'email', required:true},
+          {name:'district', label:"Child's school (optional)", type:'text', required:false}
+        ],
+        thanksTitle: "Thanks!",
+        thanksBody: "We'll keep you posted as HudsonSeed grows.",
+        thanksLinkText: null,
+        thanksLinkHref: null
+      }
+    };
+
+    window.ctaOpen = function(origin){
+      ctaOrigin = origin || 'website_widget_cta';
+      document.getElementById('ctaOverlay').classList.add('open');
+      document.getElementById('ctaStepRole').style.display = 'block';
+      document.getElementById('ctaStepForm').style.display = 'none';
+      document.getElementById('ctaStepThanks').style.display = 'none';
+      document.body.style.overflow = 'hidden';
+    };
+    window.ctaClose = function(){
+      document.getElementById('ctaOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    };
+    window.ctaBack = function(){
+      document.getElementById('ctaStepRole').style.display = 'block';
+      document.getElementById('ctaStepForm').style.display = 'none';
+    };
+    window.ctaPickRole = function(role){
+      ctaRole = role;
+      var def = FIELD_DEFS[role];
+      document.getElementById('ctaStepRole').style.display = 'none';
+      document.getElementById('ctaStepForm').style.display = 'block';
+      document.getElementById('ctaFormTitle').textContent = def.title;
+      document.getElementById('ctaFormSub').textContent = def.sub;
+      document.getElementById('ctaSubmitBtn').textContent = def.submitLabel;
+      document.getElementById('ctaSubmitBtn').disabled = false;
+      document.getElementById('ctaError').style.display = 'none';
+      var wrap = document.getElementById('ctaFormFields');
+      wrap.innerHTML = '';
+      def.fields.forEach(function(f){
+        var d = document.createElement('div');
+        d.className = 'cta-field';
+        var lab = document.createElement('label');
+        lab.textContent = f.label + (f.required ? ' *' : '');
+        var inp = document.createElement('input');
+        inp.type = f.type; inp.name = f.name; inp.id = 'cta_' + f.name;
+        if (f.required) inp.required = true;
+        d.appendChild(lab); d.appendChild(inp);
+        wrap.appendChild(d);
+      });
+    };
+    window.ctaSubmit = function(e){
+      e.preventDefault();
+      var def = FIELD_DEFS[ctaRole];
+      var btn = document.getElementById('ctaSubmitBtn');
+      var errEl = document.getElementById('ctaError');
+      errEl.style.display = 'none';
+      var vals = {};
+      def.fields.forEach(function(f){
+        vals[f.name] = (document.getElementById('cta_' + f.name).value || '').trim();
+      });
+      var noteParts = [];
+      if (vals.district) noteParts.push('School/District: ' + vals.district);
+      if (vals.grade) noteParts.push('Grade: ' + vals.grade);
+      var payload = {
+        full_name: vals.full_name || null,
+        role: ctaRole,
+        email: vals.email || null,
+        phone: vals.phone || null,
+        notes: noteParts.join(' | ') || null,
+        source: ctaOrigin,
+        status: 'new'
+      };
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      fetch(CTA_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'apikey': CTA_ANON_KEY,
+          'Authorization': 'Bearer ' + CTA_ANON_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(payload)
+      }).then(function(r){
+        if (!r.ok) throw new Error('Request failed');
+        document.getElementById('ctaStepForm').style.display = 'none';
+        var t = document.getElementById('ctaStepThanks');
+        var linkHtml = def.thanksLinkText ? ('<a class="cta-link-btn" href="' + def.thanksLinkHref + '" target="_blank" rel="noopener">' + def.thanksLinkText + '</a>') : '';
+        t.innerHTML = '<span class="cta-thanks-emoji">🍃</span><h3>' + def.thanksTitle + '</h3><p>' + def.thanksBody + '</p>' + linkHtml;
+        t.style.display = 'block';
+      }).catch(function(){
+        errEl.textContent = "Something went sideways. Try again, or email trevorvaughan@hudsonseed.com directly.";
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = def.submitLabel;
+      });
+    };
+  })();
+  </script>
+
   <script>
     var HSE="https://trevorvaughan-ux.github.io/hanuman-demo/embed.html";
     function hsPlay(id){document.getElementById('hsovf').src=HSE+"?go="+id;document.getElementById('hsov').style.display='block';document.body.style.overflow='hidden';}
