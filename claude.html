@@ -941,12 +941,16 @@
   </footer>
 
   <!-- HANUMAN FLOATING BUTTON -->
-  <button id="hanuman-float" onclick="ctaOpen('website_widget_cta')" title="Say hi to Hani">🐻</button>
+  <button id="hanuman-float" onclick="if(window.hsHaniVoice)window.hsHaniVoice(); ctaOpen('website_widget_cta')" title="Say hi to Hani">🐻</button>
 
-  <div id="hanuman-speech">
+  <div id="hanuman-speech" data-name-en="Hani · AI Yoga Coach" data-name-es="Hani · Entrenador de Yoga IA" data-en="Hi, I'm Hani, your yoga coach. I'm here whenever your class needs a reset." data-es="Hola, soy Hani, tu entrenador de yoga. Estoy aquí cuando tu clase necesite un momento de calma.">
     <div class="speech-name">Hani · AI Yoga Coach</div>
     Hi, I'm Hani, your yoga coach. I'm here whenever your class needs a reset.
   </div>
+
+  <!-- Hani voice clips (EN/ES) | added 2026-09-17, plays on float-button click per language toggle -->
+  <audio id="haniVoiceEN" src="hani-en.mp3" preload="none"></audio>
+  <audio id="haniVoiceES" src="hani-es.mp3" preload="none"></audio>
 
   <!-- LEAD CAPTURE CTA MODAL | added 2026-07-31 -->
   <div id="ctaOverlay" class="cta-overlay" onclick="if(event.target===this)ctaClose()">
@@ -989,6 +993,35 @@
         setTimeout(() => bubble.classList.remove('visible'), 5000);
       }
     }
+
+    // Hani voice (EN/ES) | added 2026-09-17 | plays the language-matched clip and
+    // updates the speech bubble text to match, on top of the existing lead-capture click.
+    // Fully wrapped in try/catch so a failure here never blocks ctaOpen() from firing.
+    window.hsHaniVoice = function () {
+      try {
+        var es = document.documentElement.lang === 'es';
+        var bubble = document.getElementById('hanuman-speech');
+        if (bubble) {
+          var nameEl = bubble.querySelector('.speech-name');
+          if (nameEl) nameEl.textContent = bubble.getAttribute(es ? 'data-name-es' : 'data-name-en') || nameEl.textContent;
+          var lineText = bubble.getAttribute(es ? 'data-es' : 'data-en');
+          if (lineText) {
+            var nodes = bubble.childNodes;
+            for (var i = nodes.length - 1; i >= 0; i--) {
+              if (nodes[i].nodeType === 3 && nodes[i].nodeValue.trim()) { nodes[i].nodeValue = '\n    ' + lineText + '\n  '; break; }
+            }
+          }
+          bubble.classList.add('visible');
+          setTimeout(function () { bubble.classList.remove('visible'); }, 6000);
+        }
+        var enA = document.getElementById('haniVoiceEN');
+        var esA = document.getElementById('haniVoiceES');
+        if (enA) enA.pause();
+        if (esA) esA.pause();
+        var a = es ? esA : enA;
+        if (a) { a.currentTime = 0; a.play().catch(function () {}); }
+      } catch (e) { /* never block the CTA click on a voice/bubble failure */ }
+    };
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');

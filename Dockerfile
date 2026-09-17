@@ -11,6 +11,10 @@ COPY poster.jpg /srv/poster.jpg
 COPY balloon-breath-thumb.jpg /srv/balloon-breath-thumb.jpg
 COPY triangle-pose-thumb.jpg /srv/triangle-pose-thumb.jpg
 
+# Hani voice clips (EN/ES) | added 2026-09-17 | floating widget button plays these on click
+COPY hani-en.mp3 /srv/hani-en.mp3
+COPY hani-es.mp3 /srv/hani-es.mp3
+
 # Old site preserved, still reachable
 COPY index.html /srv/index-legacy.html
 COPY homepage-v2.html /srv/homepage-v2.html
