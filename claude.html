@@ -1060,7 +1060,7 @@
   /* LEAD CAPTURE CTA LOGIC | added 2026-07-31. Zero AI cost: static form, direct Supabase insert. */
   (function(){
     var CTA_ENDPOINT = 'https://pebhikfbpgntedvbxqph.supabase.co/rest/v1/crm_contacts';
-    var CTA_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlYmhpa2ZicGdudGVkdmJ4cXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDg2ODEsImV4cCI6MjA5MjM4NDY4MX0.h2-mXnf8WAt3canjhSwDjQVgAhpThhTZl9IvEee_DK4';
+    var CTA_PUBLISHABLE_KEY = 'sb_publishable_7wnGQX91msxCwzq7QRqF1w_MWfgWCWT'; // public publishable key (2026-10-24 rotation; replaces legacy anon JWT)
     var ctaOrigin = 'website_widget_cta';
     var ctaRole = null;
 
@@ -1178,8 +1178,7 @@
       fetch(CTA_ENDPOINT, {
         method: 'POST',
         headers: {
-          'apikey': CTA_ANON_KEY,
-          'Authorization': 'Bearer ' + CTA_ANON_KEY,
+          'apikey': CTA_PUBLISHABLE_KEY,
           'Content-Type': 'application/json',
           'Prefer': 'return=minimal'
         },
