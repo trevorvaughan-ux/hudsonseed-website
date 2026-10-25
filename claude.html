@@ -746,7 +746,7 @@
   <!-- SLIDE 1: HERO -->
   <section id="hero">
     <div class="hero-inner">
-      <div class="slide-label">K–12 Mindfulness &amp; Movement</div>
+      <div class="slide-label">K–12 Mindfulness & Movement</div>
 
       <!-- Lotus SVG -->
       <div class="hero-lotus">
@@ -756,7 +756,7 @@
       </div>
 
       <h1 class="hero-title">The Science of Calm</h1>
-      <p class="hero-sub" style="opacity:1">K–12 yoga &amp; mindfulness, built for the everyday classroom.</p>
+      <p class="hero-sub" style="opacity:1">K–12 yoga & mindfulness, built for the everyday classroom.</p>
       <p class="hero-tagline" style="opacity:1">100% asynchronous &nbsp;·&nbsp; on-demand &nbsp;·&nbsp; press play</p>
 
       <div class="hero-photo" style="margin:38px auto 0;max-width:800px;position:relative;">
@@ -933,7 +933,7 @@
     <p style="margin-bottom:6px;">
       <strong style="color:rgba(255,255,255,0.8); font-family:'Playfair Display',serif;">HudsonSeed</strong>
     </p>
-    <p>K–12 yoga &amp; mindfulness · Jersey City, NJ</p>
+    <p>K–12 yoga & mindfulness · Jersey City, NJ</p>
     <p style="margin-top:14px; font-size:0.74rem; opacity:0.45;">
       Video content featuring children uses AI-generated imagery. &nbsp;|&nbsp;
       <a href="mailto:trevorvaughan@hudsonseed.com">trevorvaughan@hudsonseed.com</a>
@@ -1060,7 +1060,7 @@
   /* LEAD CAPTURE CTA LOGIC | added 2026-07-31. Zero AI cost: static form, direct Supabase insert. */
   (function(){
     var CTA_ENDPOINT = 'https://pebhikfbpgntedvbxqph.supabase.co/rest/v1/crm_contacts';
-    var CTA_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlYmhpa2ZicGdudGVkdmJ4cXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDg2ODEsImV4cCI6MjA5MjM4NDY4MX0.h2-mXnf8WAt3canjhSwDjQVgAhpThhTZl9IvEee_DK4';
+    var CTA_PUBLISHABLE_KEY = 'sb_publishable_7wnGQX91msxCwzq7QRqF1w_MWfgWCWT'; // public publishable key (2026-10-24 rotation; replaces legacy anon JWT)
     var ctaOrigin = 'website_widget_cta';
     var ctaRole = null;
 
@@ -1178,8 +1178,7 @@
       fetch(CTA_ENDPOINT, {
         method: 'POST',
         headers: {
-          'apikey': CTA_ANON_KEY,
-          'Authorization': 'Bearer ' + CTA_ANON_KEY,
+          'apikey': CTA_PUBLISHABLE_KEY,
           'Content-Type': 'application/json',
           'Prefer': 'return=minimal'
         },
